@@ -12,3 +12,27 @@ int singleNumber(int* nums, int numsSize)
     }
     return result;
 }
+
+
+/*以下是暴力解法：两层循环，挨个查找，时间复杂度为O(N²)*/
+
+int singleNumber(int* nums, int numsSize)
+{
+    int i=0,j=0,flag=0,key;
+    for(i=0;i<numsSize;i++)
+    {
+        key=nums[i];
+        flag=1;
+        for(j=0;j<numsSize;j++)
+        {
+            if((key==nums[j])&&(j!=i))
+            {
+                flag=0;
+                break;
+            }
+        }
+        if(flag==1)
+            break;
+    }
+    return key;
+}
